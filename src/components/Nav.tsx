@@ -14,7 +14,7 @@ const Nav = () => {
             </h1>
           </section>
           <div className="nav-left-links">
-            <Link to="/home" className="nav-link">
+            <Link to="/" className="nav-link">
               HOME
             </Link>
             <Link to="/menu" className="nav-link">
