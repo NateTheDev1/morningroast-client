@@ -29,3 +29,29 @@
   color: gray;
   font-size: 1.3rem;
 }
+
+.dialog-title {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #ec4db4;
+  text-transform: uppercase;
+}
+
+.nutrition-root {
+  display: flex;
+  justify-content: space-between;
+}
+
+.n-title {
+  font-weight: 600;
+  color: #ec4db4;
+}
+
+.nutrition {
+  font-weight: 600;
+}
+
+.nutrition-data {
+  color: black;
+}

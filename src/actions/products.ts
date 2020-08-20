@@ -17,6 +17,13 @@ export const fetchProducts = () => (dispatch: any) => {
             title
             image
             price
+            nutrition {
+              calories
+              fat
+              cholesterol
+              protein
+              caffeine
+            }
           }
         }
       `,

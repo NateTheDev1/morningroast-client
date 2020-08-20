@@ -9,6 +9,7 @@ type ProductType = {
   image: string;
   price: number;
   title: string;
+  nutrition: object;
 };
 
 const Menu = () => {
