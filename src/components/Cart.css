@@ -1,0 +1,46 @@
+.cart-root {
+  padding-top: 5%;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+}
+
+.cart-left {
+  color: white;
+  width: 35%;
+  background: #d6752e;
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-left: 3%;
+}
+
+.cart-left h2 {
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.cart-left .total {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.cart-right {
+  background: #f7f7f7;
+}
+
+.total {
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.delivery-fee-root {
+  margin-top: 3%;
+}
+
+.del-title {
+  font-weight: 700;
+}

@@ -19,6 +19,7 @@
     "graphql": "^15.3.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-google-places-autocomplete": "^2.3.2",
     "react-lazyload": "^3.0.0",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
