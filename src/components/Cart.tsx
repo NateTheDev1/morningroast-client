@@ -40,11 +40,26 @@ const Cart = () => {
         />
         {address.length > 0 && (
           <div className="delivery-fee-root">
-            <p className="del-title">Delivery Fee</p>
-            <p>$3.99</p>
+            <p className="del-title">Delivery Fee - 3.99</p>
+
+            {cart.map((product: any) => {
+              return (
+                <div>
+                  <p className="del-title">
+                    {product.title} - ${product.price}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         )}
-        <p className="total">Total: ${total}</p>
+        <p className="total">Total: ${total.toFixed(2)}</p>
+        <button
+          className="checkout-btn"
+          disabled={address.length > 0 ? false : true}
+        >
+          {address.length > 0 ? "Complete Order" : "Missing Address"}
+        </button>
       </div>
       <div className="cart-right"></div>
     </div>

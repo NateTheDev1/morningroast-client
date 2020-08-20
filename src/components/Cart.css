@@ -8,6 +8,7 @@
 .cart-left {
   color: white;
   width: 35%;
+
   background: #d6752e;
   display: flex;
   justify-items: center;
@@ -42,5 +43,50 @@
 }
 
 .del-title {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.delivery-fee-root {
+  animation: loadDel 2s;
+}
+
+@keyframes loadDel {
+  0% {
+    opacity: 0%;
+  }
+
+  100% {
+    opacity: 100%;
+  }
+}
+
+.checkout-btn {
+  margin-top: 5%;
+  width: 250px;
+  height: 50px;
+  background: white;
+  border: none;
+  color: #d6752e;
+  font-weight: 500;
+  font-size: 1.2rem;
+  border: 1px solid white;
+  border-radius: 25px;
+  transition: 0.2s;
+  letter-spacing: 1px;
+}
+
+.checkout-btn:hover:enabled {
+  background: #d6752e;
+  color: white;
+  width: 300px;
+  cursor: pointer;
   font-weight: 700;
+}
+
+.checkout-btn:disabled {
+  border: none;
+  background: lightgray;
+  color: darkgrey;
+  cursor: not-allowed;
 }
