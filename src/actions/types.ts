@@ -1,1 +1,3 @@
 export const LOADING = "LOADING";
+export const FETCH_PRODUCTS_OK = "FETCH_PRODUCTS_OK";
+export const FETCH_PRODUCTS_FAIL = "FETCH_PRODUCTS_FAIL";
