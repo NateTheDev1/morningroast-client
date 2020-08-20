@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import { LOADING } from "../actions/types";
 import productsReducer from "./productsReducer";
+import cartReducer from "./cartReducer";
 
 const initialState = {
   loading: false,
@@ -24,6 +25,7 @@ const globalReducer = (state = initialState, action: Action) => {
 const indexReducer = combineReducers({
   globalReducer,
   productsReducer,
+  cartReducer,
 });
 
 export default indexReducer;

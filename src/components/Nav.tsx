@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Nav.css";
+import { useSelector } from "react-redux";
 
 const Nav = () => {
+  const cartLength = useSelector((state: any) => state.cartReducer.cart.length);
+
   return (
     <nav className="nav">
       <section className="nav-inner">
@@ -43,7 +46,10 @@ const Nav = () => {
             </a>
           </section>
           <div>
-            <Link to="/cart">CART</Link>
+            <Link to="/cart" className="notification">
+              CART
+              {cartLength > 0 && <span className="badge">{cartLength}</span>}
+            </Link>
           </div>
           <Link to="/login" className="nav-btn">
             SIGN IN

@@ -1,3 +1,5 @@
 export const LOADING = "LOADING";
 export const FETCH_PRODUCTS_OK = "FETCH_PRODUCTS_OK";
 export const FETCH_PRODUCTS_FAIL = "FETCH_PRODUCTS_FAIL";
+export const ADD_TO_CART = "ADD_TO_CART";
+export const UPDATE_TOTAL = "UPDATE_TOTAL";

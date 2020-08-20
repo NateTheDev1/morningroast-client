@@ -44,7 +44,7 @@
 .products-grid {
   margin-top: 5%;
   background: #f8f8f8;
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;

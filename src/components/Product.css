@@ -8,13 +8,24 @@
   margin-bottom: 5%;
   flex-basis: 30%;
   transition: ease-in-out 0.2s;
+  padding: 1.25%;
 }
 
 .product-card:hover {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   cursor: pointer;
+  color: #f47920;
 }
 
 .product-card img {
-  width: 200px;
+  width: 150px;
+}
+
+.product-card .title {
+  text-transform: capitalize;
+  font-size: 1.5rem;
+}
+.product-card .price {
+  color: gray;
+  font-size: 1.3rem;
 }

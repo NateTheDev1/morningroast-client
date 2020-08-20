@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../actions/products";
 import "./Menu.css";
@@ -26,7 +26,7 @@ const Menu = () => {
 
   function mapProducts() {
     const els = productsData.map((p: ProductType) => {
-      return <Product productInfo={p} />;
+      return <Product productInfo={p} key={p.id} />;
     });
     return els;
   }
