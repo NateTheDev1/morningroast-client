@@ -17,6 +17,10 @@ const ConfirmedOrder = () => {
     }, 10000);
   }, []);
 
+  if (orderConfirm.length < 1) {
+    history.push("/");
+  }
+
   return (
     <div className="confirmed-order">
       <h2>Thank You For Your Order Valued Customer!</h2>

@@ -71,6 +71,9 @@ const CheckoutForm = ({
     <form className="checkout-form" onSubmit={handlePayment}>
       <div className="checkout-form-inner">
         <h2>${total.toFixed(2)}</h2>
+        {paymentError.length > 1 && (
+          <p style={{ color: "red !important" }}>{paymentError}</p>
+        )}
         <hr style={{ width: "100%", margin: 0, marginBottom: "5%" }} />
         <p>Credit Or Debit Card</p>
         <CardElement
