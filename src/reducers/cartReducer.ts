@@ -3,11 +3,13 @@ import {
   UPDATE_TOTAL,
   REMOVE_FROM_CART,
   UPDATE_AMOUNT,
+  UPDATE_CONFIRMATION,
 } from "../actions/types";
 
 const initialState = {
   cart: [],
   total: 0,
+  confirmation: "",
 };
 
 type Action = {
@@ -31,6 +33,8 @@ const cartReducer = (state = initialState, action: Action) => {
       };
     case UPDATE_AMOUNT:
       return { ...state, cart: action.payload, total: action.total };
+    case UPDATE_CONFIRMATION:
+      return { cart: [], total: 0, confirmation: action.payload };
     default:
       return { ...state };
   }

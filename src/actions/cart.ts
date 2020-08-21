@@ -3,6 +3,7 @@ import {
   UPDATE_TOTAL,
   REMOVE_FROM_CART,
   UPDATE_AMOUNT,
+  UPDATE_CONFIRMATION,
 } from "./types";
 
 export const updateCart = (product: any) => (dispatch: any) => {
@@ -54,4 +55,8 @@ export const updateQuantity = (
   });
 
   dispatch({ type: UPDATE_AMOUNT, payload: newCart, total: newPrice });
+};
+
+export const updateConfirmation = (confirmation: string) => (dispatch: any) => {
+  dispatch({ type: UPDATE_CONFIRMATION, payload: confirmation });
 };

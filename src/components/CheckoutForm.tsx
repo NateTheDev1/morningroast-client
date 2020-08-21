@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import "./CheckoutForm.css";
+import axios from "axios";
+import {
+  CircularProgress,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+} from "@material-ui/core";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { updateConfirmation } from "../actions/cart";
 
 const CheckoutForm = ({
   setPaying,
@@ -11,6 +21,13 @@ const CheckoutForm = ({
 }) => {
   const stripe = useStripe();
   const elements = useElements();
+
+  const history = useHistory();
+
+  const [verifyingPayment, setVerifying] = useState(false);
+  const [paymentError, setPaymentError] = useState("");
+
+  const dispatch = useDispatch();
 
   const handleBack = (e: any) => {
     e.preventDefault();
@@ -26,10 +43,28 @@ const CheckoutForm = ({
     });
 
     if (!error) {
+      setVerifying(true);
       const { id } = paymentMethod;
-    }
 
-    console.log(paymentMethod);
+      const tempAmount = total.toString();
+      const amount = tempAmount.replace(".", "");
+      axios
+        .post("https://coorderapi.herokuapp.com/api/charge", {
+          id: id,
+          amount: parseInt(amount),
+          title: "Coffee Delivery Order",
+        })
+        .then((res: any) => {
+          setVerifying(false);
+
+          dispatch(updateConfirmation(res.data.confirmation));
+          history.push("/orderconfirmed");
+        })
+        .catch((err) => {
+          setVerifying(false);
+          setPaymentError("Card Error");
+        });
+    }
   };
 
   return (
@@ -62,6 +97,14 @@ const CheckoutForm = ({
           </button>
         </div>
       </div>
+      {verifyingPayment && (
+        <Dialog open={verifyingPayment} style={{ textAlign: "center" }}>
+          <DialogTitle>Verifying Payment...</DialogTitle>
+          <DialogContent>
+            <CircularProgress />
+          </DialogContent>
+        </Dialog>
+      )}
     </form>
   );
 };
