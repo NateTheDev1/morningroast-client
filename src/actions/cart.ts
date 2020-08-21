@@ -1,8 +1,17 @@
-import { ADD_TO_CART, UPDATE_TOTAL, REMOVE_FROM_CART } from "./types";
+import {
+  ADD_TO_CART,
+  UPDATE_TOTAL,
+  REMOVE_FROM_CART,
+  UPDATE_AMOUNT,
+} from "./types";
 
 export const updateCart = (product: any) => (dispatch: any) => {
-  dispatch({ type: ADD_TO_CART, payload: product });
-  dispatch({ type: UPDATE_TOTAL, payload: product.price });
+  const newProduct = {
+    ...product,
+    quantity: 1,
+  };
+  dispatch({ type: ADD_TO_CART, payload: newProduct });
+  dispatch({ type: UPDATE_TOTAL, payload: newProduct.price });
 };
 
 export const removeFromCart = (cart: Array<Object>, productId: number) => (
@@ -18,6 +27,31 @@ export const removeFromCart = (cart: Array<Object>, productId: number) => (
 
   dispatch({
     type: REMOVE_FROM_CART,
-    payload: { cart: newCart, price: newPrice },
+    payload: { cart: newCart, price: newPrice + 3.99 },
   });
+};
+
+export const updateQuantity = (
+  cart: Array<Object>,
+  productId: number,
+  amount: number
+) => async (dispatch: any) => {
+  console.log(amount);
+  // change quantity to new quantity
+  let newCart: any = await cart.map((product: any) => {
+    if (productId === product.id) {
+      product.quantity = amount;
+      return product;
+    } else {
+      return product;
+    }
+  });
+
+  let newPrice = 0.0;
+
+  newCart.forEach((product: any) => {
+    newPrice += product.price * product.quantity;
+  });
+
+  dispatch({ type: UPDATE_AMOUNT, payload: newCart, total: newPrice });
 };

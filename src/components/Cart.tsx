@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Cart.css";
 import { useSelector, useDispatch } from "react-redux";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
@@ -11,6 +11,7 @@ const Cart = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state: any) => state.cartReducer.cart);
   const total = useSelector((state: any) => state.cartReducer.total);
+
   const [address, setAddress] = useState("");
 
   const handleAddress = (e: any) => {

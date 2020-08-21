@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Product.css";
 import LazyLoad from "react-lazyload";
 import { useDispatch, useSelector } from "react-redux";
-import { updateCart, removeFromCart } from "../actions/cart";
+import { updateCart, removeFromCart, updateQuantity } from "../actions/cart";
 import Snackbar from "@material-ui/core/Snackbar";
 import Alert from "@material-ui/lab/Alert";
 import {
@@ -12,6 +12,9 @@ import {
   DialogContentText,
   DialogActions,
   Button,
+  Select,
+  InputLabel,
+  MenuItem,
 } from "@material-ui/core";
 
 type ProductType = {
@@ -35,7 +38,11 @@ const Product = ({
   const [dialogOpen, setDialogOpen] = useState(false);
   const [inCart, setInCart] = useState(false);
 
+  const [quantity, setQuantity] = useState(1);
+
   const cart = useSelector((state: any) => state.cartReducer.cart);
+
+  const total = useSelector((state: any) => state.cartReducer.total);
 
   useEffect(() => {
     handleItem();
@@ -71,6 +78,12 @@ const Product = ({
     if (cart.some((product: any) => product.id === productInfo.id)) {
       setInCart(true);
     }
+  };
+
+  const handleQuantity = async (e: any) => {
+    setQuantity(e.target.value);
+
+    dispatch(updateQuantity(cart, productInfo.id, e.target.value));
   };
 
   return (
@@ -110,6 +123,20 @@ const Product = ({
           </div>
         </DialogContent>
         <DialogActions>
+          {inCart && cartItem && (
+            <>
+              <InputLabel id="quantity">Quantity</InputLabel>
+              <Select
+                value={quantity}
+                labelId="quantity"
+                onChange={handleQuantity}
+              >
+                <MenuItem value={2}>2</MenuItem>
+                <MenuItem value={3}>3</MenuItem>
+                <MenuItem value={4}>4</MenuItem>
+              </Select>
+            </>
+          )}
           <Button onClick={handleClose}>Cancel</Button>
           <Button onClick={handleAdd}>
             {inCart ? "Remove From Cart" : "Add To Cart"}
