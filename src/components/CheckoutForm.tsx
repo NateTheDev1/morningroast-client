@@ -28,6 +28,8 @@ const CheckoutForm = ({
     if (!error) {
       const { id } = paymentMethod;
     }
+
+    console.log(paymentMethod);
   };
 
   return (

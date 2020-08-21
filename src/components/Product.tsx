@@ -93,56 +93,66 @@ const Product = ({
       </LazyLoad>
       <p className="title">{productInfo.title}</p>
       <p className="price">${productInfo.price}</p>
-      <Dialog
-        onClose={handleClose}
-        open={dialogOpen}
-        fullWidth={true}
-        maxWidth="md"
-        aria-labelledby="Add Product To Cart"
-      >
-        <DialogTitle className="dialog-title">{productInfo.title}</DialogTitle>
-        <DialogContent>
-          <DialogContentText>${productInfo.price}</DialogContentText>
-          <div>
-            <h2 className="n-title">Nutrition Info</h2>
-            <hr className="n-divider" />
-            <div className="nutrition-root">
-              <p className="nutrition">Calories</p>
-              <p className="nutrition-data">{productInfo.nutrition.calories}</p>
-              <p className="nutrition">Cholesterol</p>
-              <p className="nutrition-data">
-                {productInfo.nutrition.cholesterol}
-              </p>
-              <p className="nutrition">Protein</p>
-              <p className="nutrition-data">{productInfo.nutrition.protein}</p>
-              <p className="nutrition">Fat</p>
-              <p className="nutrition-data">{productInfo.nutrition.fat}</p>
-              <p className="nutrition">Caffeine</p>
-              <p className="nutrition-data">{productInfo.nutrition.caffeine}</p>
+      {dialogOpen && (
+        <Dialog
+          onClose={handleClose}
+          open={dialogOpen}
+          fullWidth={true}
+          maxWidth="md"
+          aria-labelledby="Add Product To Cart"
+        >
+          <DialogTitle className="dialog-title">
+            {productInfo.title}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText>${productInfo.price}</DialogContentText>
+            <div>
+              <h2 className="n-title">Nutrition Info</h2>
+              <hr className="n-divider" />
+              <div className="nutrition-root">
+                <p className="nutrition">Calories</p>
+                <p className="nutrition-data">
+                  {productInfo.nutrition.calories}
+                </p>
+                <p className="nutrition">Cholesterol</p>
+                <p className="nutrition-data">
+                  {productInfo.nutrition.cholesterol}
+                </p>
+                <p className="nutrition">Protein</p>
+                <p className="nutrition-data">
+                  {productInfo.nutrition.protein}
+                </p>
+                <p className="nutrition">Fat</p>
+                <p className="nutrition-data">{productInfo.nutrition.fat}</p>
+                <p className="nutrition">Caffeine</p>
+                <p className="nutrition-data">
+                  {productInfo.nutrition.caffeine}
+                </p>
+              </div>
             </div>
-          </div>
-        </DialogContent>
-        <DialogActions>
-          {inCart && cartItem && (
-            <>
-              <InputLabel id="quantity">Quantity</InputLabel>
-              <Select
-                value={quantity}
-                labelId="quantity"
-                onChange={handleQuantity}
-              >
-                <MenuItem value={2}>2</MenuItem>
-                <MenuItem value={3}>3</MenuItem>
-                <MenuItem value={4}>4</MenuItem>
-              </Select>
-            </>
-          )}
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleAdd}>
-            {inCart ? "Remove From Cart" : "Add To Cart"}
-          </Button>
-        </DialogActions>
-      </Dialog>
+          </DialogContent>
+          <DialogActions>
+            {inCart && cartItem && (
+              <>
+                <InputLabel id="quantity">Quantity</InputLabel>
+                <Select
+                  value={quantity}
+                  labelId="quantity"
+                  onChange={handleQuantity}
+                >
+                  <MenuItem value={2}>2</MenuItem>
+                  <MenuItem value={3}>3</MenuItem>
+                  <MenuItem value={4}>4</MenuItem>
+                </Select>
+              </>
+            )}
+            <Button onClick={handleClose}>Cancel</Button>
+            <Button onClick={handleAdd}>
+              {inCart ? "Remove From Cart" : "Add To Cart"}
+            </Button>
+          </DialogActions>
+        </Dialog>
+      )}
       <Snackbar
         open={alertOpen}
         autoHideDuration={1500}

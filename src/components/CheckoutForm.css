@@ -8,10 +8,10 @@
   justify-items: center;
   justify-content: center;
   flex-direction: column;
-  animation: ease-in loadIn 1s;
+  /* animation: ease-in loadIn 1s; */
 }
 
-@keyframes loadIn {
+/* @keyframes loadIn {
   0% {
     opacity: 0%;
   }
@@ -19,7 +19,7 @@
   100% {
     opacity: 100%;
   }
-}
+} */
 
 .checkout-form-inner {
   height: 50%;
@@ -92,8 +92,10 @@
 
 .checkout-btns button:focus {
   border: none;
+  outline: none;
 }
 
 .checkout-btns button:active {
   border: none;
+  outline: none;
 }
