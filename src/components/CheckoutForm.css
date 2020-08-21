@@ -1,0 +1,91 @@
+.checkout-form {
+  width: 35%;
+  color: white;
+  width: 35%;
+  background: #d6752e;
+  padding: 2%;
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  flex-direction: column;
+  animation: ease-in loadIn 1s;
+}
+
+@keyframes loadIn {
+  0% {
+    opacity: 0%;
+  }
+
+  100% {
+    opacity: 100%;
+  }
+}
+
+.checkout-form-inner {
+  height: 50%;
+  width: 100%;
+  margin: 0 auto;
+  color: white;
+}
+
+.checkout-form-inner h2 {
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.StripeElement {
+  box-sizing: border-box;
+
+  height: 50px;
+
+  padding: 2%;
+
+  border: 2px solid transparent;
+
+  background-color: white;
+}
+
+.StripeElement--invalid {
+  border-color: red;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+
+.checkout-btns button {
+  background: none;
+  border: none;
+  color: white;
+  border: 1px solid white;
+  height: 50px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  transition: ease-in-out 0.2s;
+}
+
+.checkout-submit {
+  margin-bottom: 5%;
+  border: none !important;
+  background: #4dbd41 !important;
+  transition: ease-in-out 0.3s;
+}
+
+.checkout-submit:hover {
+  background: white !important;
+  color: #4dbd41;
+  opacity: 1 !important;
+}
+
+.checkout-btns button:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.checkout-btns {
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+}
