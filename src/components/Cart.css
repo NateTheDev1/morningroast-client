@@ -68,10 +68,10 @@
   background: white;
   border: none;
   color: #d6752e;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 1.2rem;
   border: 1px solid white;
-  border-radius: 25px;
+  border-radius: 10px;
   transition: 0.2s;
   letter-spacing: 1px;
 }
@@ -79,9 +79,8 @@
 .checkout-btn:hover:enabled {
   background: #d6752e;
   color: white;
-  width: 300px;
+
   cursor: pointer;
-  font-weight: 700;
 }
 
 .checkout-btn:disabled {
@@ -89,4 +88,21 @@
   background: lightgray;
   color: darkgrey;
   cursor: not-allowed;
+}
+.cart-right {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 1.25%;
+  width: 65%;
+}
+
+.products-cart-root {
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+  padding: 5%;
 }

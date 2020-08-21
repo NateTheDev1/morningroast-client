@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Product.css";
 import LazyLoad from "react-lazyload";
-import { useDispatch } from "react-redux";
-import { updateCart } from "../actions/cart";
+import { useDispatch, useSelector } from "react-redux";
+import { updateCart, removeFromCart } from "../actions/cart";
 import Snackbar from "@material-ui/core/Snackbar";
 import Alert from "@material-ui/lab/Alert";
 import {
@@ -22,28 +22,55 @@ type ProductType = {
   nutrition: object;
 };
 
-const Product = ({ productInfo }: { productInfo: any }) => {
+const Product = ({
+  productInfo,
+  cartItem = false,
+}: {
+  productInfo: any;
+  cartItem?: boolean;
+}) => {
   const dispatch = useDispatch();
 
   const [alertOpen, setAlertOpen] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [inCart, setInCart] = useState(false);
+
+  const cart = useSelector((state: any) => state.cartReducer.cart);
+
+  useEffect(() => {
+    handleItem();
+  }, [cart]);
 
   // Placeholder for adding to cart
   const handleAdd = (e: any) => {
     e.stopPropagation();
     setDialogOpen(false);
-    dispatch(updateCart(productInfo));
-    setAlertOpen(true);
+    if (!inCart) {
+      dispatch(updateCart(productInfo));
+      setInCart(true);
+      setAlertOpen(true);
+    } else {
+      dispatch(removeFromCart(cart, productInfo.id));
+      setInCart(false);
+      setAlertOpen(true);
+    }
   };
 
   const handleClose = (e: any) => {
     e.stopPropagation();
+
     setDialogOpen(false);
   };
 
   const handleOpen = (e: any) => {
     e.stopPropagation();
     setDialogOpen(true);
+  };
+
+  const handleItem = () => {
+    if (cart.some((product: any) => product.id === productInfo.id)) {
+      setInCart(true);
+    }
   };
 
   return (
@@ -84,7 +111,9 @@ const Product = ({ productInfo }: { productInfo: any }) => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleAdd}>Add To Cart</Button>
+          <Button onClick={handleAdd}>
+            {inCart ? "Remove From Cart" : "Add To Cart"}
+          </Button>
         </DialogActions>
       </Dialog>
       <Snackbar
@@ -97,7 +126,7 @@ const Product = ({ productInfo }: { productInfo: any }) => {
           onClose={() => setAlertOpen(false)}
           style={{ fontSize: "1.2rem", background: "#F47920", color: "white" }}
         >
-          Added To Cart!
+          {inCart ? "Added To Cart" : "Removed From Cart"}
         </Alert>
       </Snackbar>
     </div>

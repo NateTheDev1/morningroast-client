@@ -5,6 +5,7 @@ import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 // If you want to use the provided css
 import "react-google-places-autocomplete/dist/index.min.css";
 import { UPDATE_TOTAL } from "../actions/types";
+import CartRight from "./CartRight";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -61,7 +62,9 @@ const Cart = () => {
           {address.length > 0 ? "Complete Order" : "Missing Address"}
         </button>
       </div>
-      <div className="cart-right"></div>
+      <div className="cart-right">
+        {cart.length > 0 && <CartRight cart={cart} />}
+      </div>
     </div>
   );
 };
