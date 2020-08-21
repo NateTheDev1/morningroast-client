@@ -47,7 +47,9 @@ const CheckoutForm = ({
       const { id } = paymentMethod;
 
       const tempAmount = total.toString();
-      const amount = tempAmount.replace(".", "");
+
+      const amount = tempAmount.replace(".", "").substring(0, 4);
+
       axios
         .post("https://coorderapi.herokuapp.com/api/charge", {
           id: id,
