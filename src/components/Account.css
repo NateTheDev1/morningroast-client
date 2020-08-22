@@ -1,0 +1,32 @@
+.account-root {
+  height: 100vh;
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 8%;
+  display: flex;
+  flex-direction: column;
+}
+
+.account-root h1 {
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #f47920;
+  text-transform: capitalize;
+}
+
+.orders-divider {
+  background: black;
+  width: 100%;
+}
+
+.orders-table {
+  width: 75%;
+}
+
+.orders-table-root {
+  margin-top: 3%;
+}
+
+.order-headers {
+  font-weight: 700;
+}

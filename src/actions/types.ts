@@ -11,3 +11,4 @@ export const LOGIN_USER_FAIL = "LOGIN_USER_FAIL";
 export const SIGN_UP_OK = "SIGN_UP_OK";
 export const SIGN_UP_FAIL = "SIGN_UP_FAIL";
 export const LOGOUT = "LOGOUT";
+export const FETCH_ORDERS = "FETCH_ORDERS";

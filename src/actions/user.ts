@@ -4,6 +4,7 @@ import {
   LOGIN_USER_FAIL,
   SIGN_UP_OK,
   SIGN_UP_FAIL,
+  FETCH_ORDERS,
 } from "./types";
 
 type Credentials = {
@@ -31,12 +32,6 @@ export const loginUser = (credentials: Credentials) => (dispatch: any) => {
             id
             username
             token
-            orders {
-              id
-              order_info
-              total
-              date
-            }
           }
         }
       `,
@@ -64,12 +59,6 @@ export const createUser = (credentials: Credentials) => (dispatch: any) => {
             id
             username
             token
-            orders {
-              id
-              order_info
-              total
-              date
-            }
           }
         }
       `,
@@ -81,5 +70,33 @@ export const createUser = (credentials: Credentials) => (dispatch: any) => {
     .catch((err) => {
       console.log(err);
       dispatch({ type: SIGN_UP_FAIL, error: "Username already taken." });
+    });
+};
+
+export const fetchOrders = (user: any) => (dispatch: any) => {
+  client
+    .query({
+      variables: {
+        customer_id: user.id,
+      },
+      query: gql`
+        query getOrders($customer_id: ID!) {
+          orders(customer_id: $customer_id) {
+            id
+            total
+            date
+            order_info
+          }
+        }
+      `,
+    })
+    .then((res) => {
+      dispatch({
+        type: FETCH_ORDERS,
+        payload: { ...user, orders: res.data.orders },
+      });
+    })
+    .catch((err) => {
+      console.log(err);
     });
 };

@@ -25,21 +25,23 @@ const Nav = () => {
               MORNING <span className="logo-header-middle">ROAST</span> COFFEE
             </h1>
           </section>
-          <div className="nav-left-links">
+          <div
+            className="nav-left-links"
+            style={{
+              justifyContent: user === null ? "space-around " : "",
+            }}
+          >
             <Link to="/" className="nav-link">
               HOME
             </Link>
             <Link to="/menu" className="nav-link">
               OUR MENU
             </Link>
-            <a
-              href="https://store.bhappylounge.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="nav-link"
-            >
-              SHOP
-            </a>
+            {user !== null && (
+              <Link to="/account" className="nav-link">
+                ACCOUNT
+              </Link>
+            )}
           </div>
         </section>
         <section className="nav-right">

@@ -6,6 +6,7 @@ import Menu from "./components/Menu";
 import Cart from "./components/Cart";
 import ConfirmedOrder from "./components/ConfirmedOrder";
 import Onboarding from "./components/Onboarding";
+import Account from "./components/Account";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         <Route exact path="/login">
           <Onboarding onboardingType="login" />
         </Route>
+        <Route exact path="/account" component={Account} />
       </Switch>
     </>
   );
