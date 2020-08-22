@@ -64,11 +64,9 @@ export const createUser = (credentials: Credentials) => (dispatch: any) => {
       `,
     })
     .then((res) => {
-      console.log(res.data.login);
-      dispatch({ type: SIGN_UP_OK, payload: res.data.login });
+      dispatch({ type: SIGN_UP_OK, payload: res.data.addUser });
     })
     .catch((err) => {
-      console.log(err);
       dispatch({ type: SIGN_UP_FAIL, error: "Username already taken." });
     });
 };
