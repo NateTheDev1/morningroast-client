@@ -4,6 +4,8 @@ import {
   LOGIN_USER_OK,
   LOGIN_USER_FAIL,
   LOGOUT,
+  SIGN_UP_OK,
+  SIGN_UP_FAIL,
 } from "../actions/types";
 import productsReducer from "./productsReducer";
 import cartReducer from "./cartReducer";
@@ -30,6 +32,10 @@ const globalReducer = (state = initialState, action: Action) => {
       return { ...state, user_error: action.error };
     case LOGOUT:
       return { ...state, user_error: "", user: null };
+    case SIGN_UP_OK:
+      return { ...state, user: action.payload };
+    case SIGN_UP_FAIL:
+      return { ...state, user_error: action.error };
     default:
       return { ...state };
   }

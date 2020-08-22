@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./Onboarding.css";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { loginUser } from "../actions/user";
+import { useHistory, Link } from "react-router-dom";
+import { loginUser, createUser } from "../actions/user";
 
 const Onboarding = ({ onboardingType }: { onboardingType: string }) => {
   const user = useSelector((state: any) => state.globalReducer.user);
@@ -19,7 +19,11 @@ const Onboarding = ({ onboardingType }: { onboardingType: string }) => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
 
-    dispatch(loginUser(formState));
+    if (onboardingType === "login") {
+      dispatch(loginUser(formState));
+    } else {
+      dispatch(createUser(formState));
+    }
   };
 
   return (
@@ -29,8 +33,8 @@ const Onboarding = ({ onboardingType }: { onboardingType: string }) => {
         <h1>
           {onboardingType === "signup" ? "Join The Party!" : "Welcome Back!"}
         </h1>
-        {error.length > 0 && user !== null && (
-          <p style={{ color: "red" }}>{error}</p>
+        {error.length > 0 && user === null && (
+          <p style={{ color: "red", fontSize: "1.3rem" }}>{error}</p>
         )}
         <hr className="onboarding-divider" />
         <input
@@ -60,6 +64,14 @@ const Onboarding = ({ onboardingType }: { onboardingType: string }) => {
         >
           {onboardingType === "signup" ? "Sign Up" : "Login"}
         </button>
+        <Link
+          to={onboardingType === "login" ? "/signup" : "/login"}
+          className="noaccount"
+        >
+          {onboardingType === "login"
+            ? "Don't have an account?"
+            : "Already have an account?"}
+        </Link>
       </div>
     </form>
   );

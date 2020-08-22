@@ -73,3 +73,10 @@
   background: #f47920;
   color: white;
 }
+
+.noaccount {
+  margin-top: 3%;
+  text-decoration: none;
+  color: gray;
+  text-decoration: underline;
+}
