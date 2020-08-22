@@ -9,7 +9,7 @@ import {
   DialogContent,
 } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateConfirmation } from "../actions/cart";
 
 const CheckoutForm = ({
@@ -26,6 +26,8 @@ const CheckoutForm = ({
 
   const [verifyingPayment, setVerifying] = useState(false);
   const [paymentError, setPaymentError] = useState("");
+
+  const user = useSelector((state: any) => state.globalReducer.user);
 
   const dispatch = useDispatch();
 
@@ -49,12 +51,14 @@ const CheckoutForm = ({
       const tempAmount = total.toString();
 
       const amount = tempAmount.replace(".", "").substring(0, 4);
-
+      //
       axios
         .post("https://coorderapi.herokuapp.com/api/charge", {
           id: id,
           amount: parseInt(amount),
           title: "Coffee Delivery Order",
+          total,
+          customerId: user.id,
         })
         .then((res: any) => {
           setVerifying(false);

@@ -11,6 +11,8 @@ const ConfirmedOrder = () => {
 
   const history = useHistory();
 
+  const user = useSelector((state: any) => state.globalReducer.user);
+
   useEffect(() => {
     setTimeout(() => {
       history.push("/");
@@ -23,7 +25,7 @@ const ConfirmedOrder = () => {
 
   return (
     <div className="confirmed-order">
-      <h2>Thank You For Your Order Valued Customer!</h2>
+      <h2>Thank You For Your Order {user.username}</h2>
       <p>Order Confirmation: {orderConfirm}</p>
       <p>Estimated Delivery Time: 23 Minutes</p>
       <p>You Will Automatically Redirected in 10 seconds</p>

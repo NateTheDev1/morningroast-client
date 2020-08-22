@@ -1,10 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Nav.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { LOGOUT } from "../actions/types";
 
 const Nav = () => {
   const cartLength = useSelector((state: any) => state.cartReducer.cart.length);
+  const user = useSelector((state: any) => state.globalReducer.user);
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    if (user !== null) {
+      dispatch({ type: LOGOUT });
+    }
+  };
 
   return (
     <nav className="nav">
@@ -51,8 +60,9 @@ const Nav = () => {
               {cartLength > 0 && <span className="badge">{cartLength}</span>}
             </Link>
           </div>
-          <Link to="/login" className="nav-btn">
-            SIGN IN
+
+          <Link to={"/login"} onClick={handleLogout} className="nav-btn">
+            {user === null ? "LOGIN" : "SIGN OUT"}
           </Link>
         </section>
       </section>

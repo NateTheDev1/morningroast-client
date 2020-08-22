@@ -13,6 +13,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
 
 import cardImage from "../card_image.svg";
+import { useHistory } from "react-router-dom";
 
 const stripePromise: any = loadStripe(
   process.env.REACT_APP_PUBLISHABLE_STRIPE_KEY!
@@ -22,6 +23,9 @@ const Cart = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state: any) => state.cartReducer.cart);
   const total = useSelector((state: any) => state.cartReducer.total);
+  const user = useSelector((state: any) => state.globalReducer.user);
+
+  const history = useHistory();
 
   const [paying, setPaying] = useState(false);
 
@@ -30,6 +34,10 @@ const Cart = () => {
   function handleAddress(e: any) {
     setAddress(e.description);
     dispatch({ type: UPDATE_TOTAL, payload: 3.99 });
+  }
+
+  if (user === null) {
+    history.push("/login");
   }
 
   return (
