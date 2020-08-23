@@ -30,3 +30,13 @@
 .order-headers {
   font-weight: 700;
 }
+
+@media (max-width: 1000px) {
+  .account-root {
+    padding-top: 15%;
+  }
+
+  .account-root {
+    width: 90%;
+  }
+}
