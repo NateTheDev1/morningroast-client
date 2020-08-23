@@ -55,3 +55,9 @@
 .nutrition-data {
   color: black;
 }
+
+@media (max-width: 550px) {
+  .nutrition-root {
+    flex-direction: column;
+  }
+}
