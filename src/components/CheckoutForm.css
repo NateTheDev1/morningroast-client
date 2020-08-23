@@ -99,3 +99,28 @@
   border: none;
   outline: none;
 }
+
+@media (max-width: 1352px) {
+  .checkout-form {
+    width: 100%;
+  }
+
+  img {
+    width: 75%;
+  }
+}
+
+@media (max-width: 607px) {
+  .checkout-form {
+    height: 600px;
+  }
+
+  .checkout-form-inner {
+    height: 100%;
+  }
+
+  img {
+    padding-top: 20%;
+    margin-bottom: 5%;
+  }
+}

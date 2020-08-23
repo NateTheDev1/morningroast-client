@@ -90,3 +90,48 @@
   justify-content: space-between;
   padding: 5%;
 }
+
+@media (max-width: 1134px) {
+  .products-cart-root {
+    padding: 10%;
+  }
+}
+
+@media (max-width: 847px) {
+  .cart-left {
+    width: 75%;
+  }
+
+  .products-cart-root {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 607px) {
+  .cart-root {
+    flex-direction: column-reverse;
+    height: 100%;
+  }
+
+  .checkout-btn {
+    margin-bottom: 5%;
+  }
+
+  .products-cart-root {
+    flex-direction: row;
+
+    height: 80vh;
+    padding-top: 15%;
+    overflow-x: scroll;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+
+  .cart-right {
+    width: 100%;
+  }
+
+  .cart-left {
+    width: 100%;
+  }
+}
