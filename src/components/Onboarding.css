@@ -80,3 +80,32 @@
   color: gray;
   text-decoration: underline;
 }
+
+@media (max-width: 1440px) {
+  .onboarding-left {
+    display: none;
+  }
+
+  .onboarding-right {
+    width: 100%;
+  }
+
+  .onboarding-divider {
+    width: 90%;
+  }
+
+  .onboarding-input {
+    width: 90%;
+    margin-top: 5%;
+  }
+}
+
+@media (max-width: 721px) {
+  .onboarding-input {
+    margin-top: 10%;
+  }
+
+  .onboarding-submit {
+    margin-top: 10%;
+  }
+}
