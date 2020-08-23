@@ -61,7 +61,7 @@ const Account = () => {
                     <TableCell>{order.order_info}</TableCell>
                     <TableCell>${order.total}</TableCell>
                     <TableCell>
-                      <Moment toNow>{order.when}</Moment>
+                      <Moment fromNow>{order.when}</Moment>
                     </TableCell>
                   </TableRow>
                 ))}
