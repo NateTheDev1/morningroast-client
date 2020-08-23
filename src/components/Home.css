@@ -2,6 +2,7 @@
   height: 100vh;
   width: 100vw;
   display: flex;
+
   padding-top: 5%;
   background-image: url("../homebg.jpg");
   background-position: center;
@@ -61,4 +62,47 @@
 
 .covid-message:hover {
   color: #f47920;
+}
+
+@media (max-width: 1366px) {
+  .home-container {
+    height: 100vh;
+    flex-direction: column;
+    padding-top: 20%;
+  }
+
+  .home-left {
+    margin-left: 5%;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .home-container {
+    height: 100vh;
+    flex-direction: column;
+    background: none;
+  }
+
+  .home-left {
+    margin-left: 5%;
+    height: 100%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 400px) {
+  .home-container {
+    padding-top: 25%;
+    height: 100%;
+  }
+
+  .home-left {
+    justify-content: space-between;
+  }
 }

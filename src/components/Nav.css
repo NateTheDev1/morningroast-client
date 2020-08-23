@@ -198,4 +198,27 @@
   }
 }
 
-@media (max-width: 712);
+@media (max-width: 450px) {
+  .nav-logo i {
+    margin-right: 5%;
+    font-size: 1rem;
+    color: #f47920;
+  }
+
+  .nav-logo h1 {
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+
+  .nav-logo h1 span {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #f47920;
+  }
+}
+
+@media (max-width: 711px) {
+  .MuiPaper-root {
+    width: 50%;
+  }
+}
