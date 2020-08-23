@@ -64,7 +64,7 @@
 
 @media (max-width: 607px) {
   .product-card {
-    margin-bottom: 0;
-    margin-right: 10%;
+    margin-bottom: 5%;
+    margin-top: 20%;
   }
 }
